@@ -1,6 +1,6 @@
 {% extends "layouts/unbranded.html" %}
 
-{% set pageName = "Check your answers" %}
+{% set pageName = "Check your answers before submitting your site" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -18,43 +18,144 @@
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      <p class="govuk-body">Please review your answers, and select the relevant Edit link if you'd like to change anything before you submit your suggestion. Your suggestion won't be submitted until you've selected the Submit your suggestion button at the bottom of this page.</p>
+      <h2 class="govuk-heading-m">Contact details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: { text: "Your name" },
+            value: { text: data['name'] if data['name'] else "Not provided" },
+            actions: { items: [{ href: "/contact-details", text: "Change", visuallyHiddenText: "your name" }] }
+          },
+          {
+            key: { text: "Your organisation" },
+            value: { text: data['organisation'] if data['organisation'] else "Not provided" },
+            actions: { items: [{ href: "/contact-details", text: "Change", visuallyHiddenText: "your organisation" }] }
+          },
+          {
+            key: { text: "Email address" },
+            value: { text: data['email'] if data['email'] else "Not provided" },
+            actions: { items: [{ href: "/contact-details", text: "Change", visuallyHiddenText: "your email address" }] }
+          },
+          {
+            key: { text: "Phone number" },
+            value: { text: data['phone'] if data['phone'] else "Not provided" },
+            actions: { items: [{ href: "/contact-details", text: "Change", visuallyHiddenText: "your phone number" }] }
+          },
+          {
+            key: { text: "Acting on behalf of" },
+            value: { text: data['actingOnBehalfOf'] if data['actingOnBehalfOf'] else "Not provided" },
+            actions: { items: [{ href: "/contact-details", text: "Change", visuallyHiddenText: "who you are acting on behalf of" }] }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Site details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: { text: "Site uses" },
+            value: { html: data['siteUses'] | join("<br>") if data['siteUses'] else "Not provided" },
+            actions: { items: [{ href: "/site-uses", text: "Change", visuallyHiddenText: "site uses" }] }
+          },
+          {
+            key: { text: "Site boundary" },
+            value: { 
+              text: "Using " + data['siteBoundaryChoice'] if data['siteBoundaryChoice'] else "Not provided"
+            },
+            actions: { items: [{ href: "/site-boundary-choice", text: "Change", visuallyHiddenText: "site boundary method" }] }
+          },
+          {
+            key: { text: "Site address" },
+            value: { 
+              html: ([
+                data['addressLine1'], 
+                data['addressLine2'],
+                data['siteName'],
+                data['townCity'],
+                data['county'],
+                data['postcode']
+              ] | select("truthy") | join("<br>")) if data['addressLine1'] or data['postcode'] else "Not provided"
+            },
+            actions: { items: [{ href: "/site-address", text: "Change", visuallyHiddenText: "site address" }] }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Site constraints</h2>
+      {% set floodZone3Text %}
+        {% if data['floodZone3Type'] %}
+          Type: {{ data['floodZone3Type'] }}
+        {% elif data['floodZone3Response'] %}
+          {{ data['floodZone3Response'] }}
+        {% else %}
+          Not provided
+        {% endif %}
+      {% endset %}
 
       {{ govukSummaryList({
         rows: [
           {
-            key: {
-              text: "Where are the boundaries of this site?"
-            },
-            value: {
-              text: "Map boundary drawn"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/site-boundary",
-                  text: "Change",
-                  visuallyHiddenText: "where the boundaries of this site are"
-                }
-              ]
-            }
+            key: { text: "Flood zone 1 response" },
+            value: { text: data['floodZone1Response'] if data['floodZone1Response'] else "Not provided" },
+            actions: { items: [{ href: "/flood-zone-1", text: "Change", visuallyHiddenText: "flood zone 1 response" }] }
           },
           {
-            key: {
-              text: "What is the site address?"
+            key: { text: "Flood zone 3 response" },
+            value: { text: floodZone3Text | trim },
+            actions: { items: [{ href: "/flood-zone-3", text: "Change", visuallyHiddenText: "flood zone 3 response" }] }
+          },
+          {
+            key: { text: "Other constraints" },
+            value: { text: data['otherConstraints'] if data['otherConstraints'] else "None provided" },
+            actions: { items: [{ href: "/other-constraints", text: "Change", visuallyHiddenText: "other constraints" }] }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Additional information</h2>
+      {% set preAppText %}
+        {% if data['hasPreAppDiscussion'] == "yes" %}
+          Yes - Reference: {{ data['preAppReference'] }}
+        {% elif data['hasPreAppDiscussion'] == "no" %}
+          No
+        {% else %}
+          Not provided
+        {% endif %}
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: { text: "Pre-application discussions" },
+            value: { text: preAppText | trim },
+            actions: { items: [{ href: "/pre-application", text: "Change", visuallyHiddenText: "pre-application discussions" }] }
+          },
+          {
+            key: { text: "Willing to join or split site" },
+            value: { text: data['siteJoining'] if data['siteJoining'] else "Not provided" },
+            actions: { items: [{ href: "/site-joining", text: "Change", visuallyHiddenText: "site joining preference" }] }
+          },
+          {
+            key: { text: "Connection to site" },
+            value: { 
+              text: data['siteConnection'] + (": " + data['otherConnection'] if data['siteConnection'] == "other" else "") if data['siteConnection'] else "Not provided"
             },
-            value: {
-              text: data['addressLine1'] + "\n" + data['postcode'] if data['addressLine1'] and data['postcode'] else "Not provided"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/site-address",
-                  text: "Change",
-                  visuallyHiddenText: "what the site address is"
-                }
-              ]
-            }
+            actions: { items: [{ href: "/site-connection", text: "Change", visuallyHiddenText: "connection to site" }] }
+          },
+          {
+            key: { text: "Site constraints" },
+            value: { html: data['siteConstraints'] | join("<br>") if data['siteConstraints'] else "None" },
+            actions: { items: [{ href: "/site-constraints-checklist", text: "Change", visuallyHiddenText: "site constraints" }] }
+          },
+          {
+            key: { text: "Expected completion year" },
+            value: { text: data['timelineYear'] if data['timelineYear'] and not data['timelineUnknown'] else "Don't know" },
+            actions: { items: [{ href: "/site-timeline", text: "Change", visuallyHiddenText: "expected completion year" }] }
+          },
+          {
+            key: { text: "Additional comments" },
+            value: { text: data['additionalComments'] if data['additionalComments'] else "Not provided" },
+            actions: { items: [{ href: "/additional-comments", text: "Change", visuallyHiddenText: "additional comments" }] }
           }
         ]
       }) }}
@@ -66,15 +167,12 @@
       <p class="govuk-body">You can <a href="#" class="govuk-link">download a copy of your application</a> (PDF, 2.5MB)</p>
 
       <form class="form" action="/confirmation" method="post">
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Accept and send"
-          }) }}
-
-          <a href="#" class="govuk-link">Back</a>
-        </div>
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
       </form>
-
     </div>
   </div>
+
 {% endblock %}
+
