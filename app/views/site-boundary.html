@@ -1,0 +1,60 @@
+{% extends "layouts/unbranded.html" %}
+
+{% set pageName = "Where are the boundaries of this site?" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <p class="govuk-body">Draw the boundaries of your suggested site using the polygon icon on the right of the map. You can edit the boundaries with the pencil icon.</p>
+
+      {% set helpWithBoundaryHtml %}
+        <p class="govuk-body">To draw the boundaries of your suggested site:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>type in a road name or postcode into the search bar at the top of the map</li>
+          <li>once you've found the area your site is in, use the polygon icon on the right of the map to start drawing a boundary</li>
+          <li>select the edges of the site until the whole site is within the blue shape</li>
+          <li>double-click to finish the shape</li>
+        </ul>
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: "Help with drawing a site boundary",
+        html: helpWithBoundaryHtml
+      }) }}
+
+      {% set changeBoundaryHtml %}
+        <p class="govuk-body">If you want to make any changes to the site boundary once you've finished, select the pencil icon on the right of the map to do so.</p>
+        <p class="govuk-body">If you're not happy with the boundary you've drawn, select the delete icon on the right of the map and start again.</p>
+        <p class="govuk-body">If you want to change the map view – such as switching to aerial pictures – select the gallery icon on the right of the map.</p>
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: "Change a site boundary",
+        html: changeBoundaryHtml
+      }) }}
+
+      <h3 class="govuk-heading-m">After you've drawn your boundary</h3>
+      <p class="govuk-body">It's helpful for us if you draw a boundary that's as accurate as possible – but there's no need to do it over and over to get it exactly right.</p>
+      <p class="govuk-body">We'll ask for your contact details later in the form, and we'll get in touch if we have any questions about where the boundary line is intended to be.</p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

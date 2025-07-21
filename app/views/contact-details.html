@@ -1,0 +1,80 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Contact details – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Please provide your contact details
+      </h1>
+
+      <p class="govuk-body">
+        We need your contact details so we can get in touch if we need to discuss
+        your suggestion, clarify anything, or gather more information.
+      </p>
+
+      <p class="govuk-body">
+        Your contact details will only be used to contact you about this site
+        suggestion. You can refer to our <a href="#">privacy notice</a> for more information.
+      </p>
+
+      <form class="form" action="/site-boundary-choice" method="post">
+
+        {{ govukInput({
+          name: "name",
+          label: { text: "Your name", classes: "govuk-label--s" }
+        }) }}
+
+        {{ govukInput({
+          name: "organisation",
+          label: { text: "Your organisation — if relevant", classes: "govuk-label--s"  }
+        }) }}
+
+        {{ govukInput({
+          name: "email",
+          label: { text: "Your email address", classes: "govuk-label--s"  },
+          type: "email"
+        }) }}
+
+        {{ govukInput({
+          name: "phone",
+          label: { text: "Your phone number", classes: "govuk-label--s"  },
+          type: "tel",
+          classes: "govuk-input--width-10"
+        }) }}
+
+        <p class="govuk-body">If you are acting on behalf of another person or organisation please provide details of the person or organisation you're acting on behalf of</p>
+
+        {{ govukInput({
+          name: "actingOnBehalfOf",
+          label: { text: "Their name or organisation's name", classes: "govuk-label--s"  }
+        }) }}
+
+        {{ govukTextarea({
+          name: "additionalInfo",
+          label: { text: "Any other information we should know about the person or organisation you're acting on behalf of", classes: "govuk-label--s"  },
+          rows: 5
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layouts/unbranded.html" %}
+
+{% set pageName = "We've got your submission" %}
+
+{% block pageTitle %}
+  Confirmation – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageName,
+        html: "Your reference number<br><strong>HDJ2123F</strong>"
+      }) }}
+
+      <p class="govuk-body">We have sent you a confirmation email to the email address you provided.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">If we need more details on any part of your suggestion, we'll get in touch using the contact details you provided.</p>
+
+      <p class="govuk-body">Once the call for sites has finished, we'll publish all the submissions we've received on our website.</p>
+
+      <p class="govuk-body">If you have any concerns about your submission and whether we have received it, or you have any questions about the call for sites, you can contact us on <a href="mailto:localauthority@siteselection.gov.uk" class="govuk-link">localauthority@siteselection.gov.uk</a></p>
+
+      <p class="govuk-body">You can <a href="#" class="govuk-link">download a copy of your application</a> (PDF, 2.5MB)</p>
+
+      {{ govukButton({
+        text: "Submit another site",
+        href: "/start",
+        isStartButton: true
+      }) }}
+
+      <p class="govuk-body"><a href="#" class="govuk-link">Back to your local authority's website</a></p>
+    </div>
+  </div>
+{% endblock %}

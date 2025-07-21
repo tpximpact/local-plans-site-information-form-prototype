@@ -1,0 +1,60 @@
+{% extends "layouts/unbranded.html" %}
+
+{% set pageName = "Would you be willing for this site to be joined with adjacent sites, or split?" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <form class="form" action="/site-connection" method="post">
+        {{ govukRadios({
+          name: "siteJoining",
+          fieldset: {
+            legend: {
+              text: pageName,
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Sometimes it might be better to join sites together or, split up ones to make improved development sites."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            },
+            {
+              value: "maybe",
+              text: "Maybe"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <a href="#" class="govuk-link">Back</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

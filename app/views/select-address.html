@@ -1,0 +1,75 @@
+{% extends "layouts/unbranded.html" %}
+
+{% set pageName = "Select an address" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">6 addresses found for wr11nl and 1.</p>
+
+      {{ govukButton({
+        text: "Search again",
+        href: "/find-address",
+        classes: "govuk-button--secondary"
+      }) }}
+
+      <form class="form" action="/site-boundary-constraints" method="post">
+        {{ govukRadios({
+          name: "selectedAddress",
+          fieldset: {
+            legend: {
+              text: pageName,
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "1-washington-street",
+              text: "1 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+              value: "10-washington-street",
+              text: "10 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+              value: "11-washington-street",
+              text: "11 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+              value: "101-washington-street",
+              text: "101 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+              value: "110-washington-street",
+              text: "110 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+              value: "111-washington-street",
+              text: "111 Washington Street, Worcester, WR1 1NL"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Use this address"
+          }) }}
+
+          <a href="/site-address" class="govuk-link">Enter address manually</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

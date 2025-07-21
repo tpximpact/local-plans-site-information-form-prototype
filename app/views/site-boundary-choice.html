@@ -1,0 +1,58 @@
+{% extends "layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Site boundary choice – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/site-boundary-choice" method="post">
+
+        {{ govukRadios({
+          name: "siteBoundaryChoice",
+          fieldset: {
+            legend: {
+              text: "How would you like to enter your site boundary?",
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "draw",
+              text: "Draw the site boundary on a map"
+            },
+            {
+              value: "upload",
+              text: "Upload GIS shape file"
+            },
+            {
+              value: "findAddress",
+              text: "Find the site using an address"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          <a href="/site-uses" class="govuk-link">Back</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

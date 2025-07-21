@@ -6,4 +6,17 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
+// Routes with branching logic
+router.post('/site-boundary-choice', (req, res) => {
+  if (req.body.siteBoundaryChoice === 'draw') {
+    return res.redirect('/site-boundary')
+  } else if (req.body.siteBoundaryChoice === 'upload') {
+    return res.redirect('/upload-boundary')
+  } else if (req.body.siteBoundaryChoice === 'findAddress') {
+    return res.redirect('/find-address')
+  } else {
+    res.render('/site-boundary-choice')
+  }
+})
+
+

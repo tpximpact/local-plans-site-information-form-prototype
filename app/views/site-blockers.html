@@ -1,0 +1,81 @@
+{% extends "layouts/unbranded.html" %}
+
+{% set pageName = "Are any of the following true about the site?" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <form class="form" action="/site-timeline" method="post">
+        {{ govukCheckboxes({
+          name: "siteConstraints",
+          fieldset: {
+            legend: {
+              text: pageName,
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "You can select multiple."
+          },
+          items: [
+            {
+              value: "lease",
+              text: "Existing use on the site with a lease"
+            },
+            {
+              value: "multiple-ownership",
+              text: "Multiple ownership"
+            },
+            {
+              value: "third-party-land",
+              text: "Reliant on third party land (for example, to provide access or there are ransom strips)"
+            },
+            {
+              value: "legal-impediments",
+              text: "Legal impediments to development (for example, restrictive covenants)"
+            },
+            {
+              value: "abnormal-costs",
+              text: "Notable abnormal costs related to the development"
+            },
+            {
+              value: "neighbouring-uses",
+              text: "Neighbouring uses or structures that impact the development (for example, uses that affect amenity or structures that have associated offsets)"
+            },
+            {
+              value: "utilities",
+              text: "The site can't be connected to existing utilities (for example: sewers, electricity, gas, and broadband)"
+            },
+            {
+              value: "none",
+              text: "None",
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <a href="#" class="govuk-link">Back</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

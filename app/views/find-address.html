@@ -1,0 +1,61 @@
+{% extends "layouts/unbranded.html" %}
+
+{% set pageName = "Find an address" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <form class="form" action="/select-address" method="post">
+
+        {{ govukInput({
+          label: {
+            text: "Postcode",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "For example, AA3 1AB."
+          },
+          id: "postcode",
+          name: "postcode"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Building number or name",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "For example, 15 or Prospect Cottage."
+          },
+          id: "building",
+          name: "building"
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Find address"
+          }) }}
+
+          <a href="/site-address" class="govuk-link">Enter address manually</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

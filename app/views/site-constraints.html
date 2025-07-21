@@ -1,0 +1,65 @@
+{% extends "layouts/unbranded.html" %}
+
+{% set pageName = "Potential site constraints" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <p class="govuk-body">Planning data shows that your site is in flood zones 1 and 3a. Please let us how you plan mitigate the constraints.</p>
+
+      <p class="govuk-body">If you skip this step, we may ask how you will mitigate the constraints when we assess all suggested sites.</p>
+
+      {{ govukTaskList({
+        items: [
+          {
+            title: {
+              text: "Flood zone 1"
+            },
+            href: "/flood-zone-1",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--grey"
+              }
+            }
+          },
+          {
+            title: {
+              text: "Flood zone 3"
+            },
+            href: "/flood-zone-3",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--grey"
+              }
+            }
+
+          }
+        ]
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue",
+          href: "/other-constraints"
+        }) }}
+
+        <a href="#" class="govuk-link">Back</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
