@@ -4,3 +4,25 @@
 // 
 
 // Add extra styles here
+
+// Colour palette
+$borchester-green: #044918;
+$borchester-yellow: #ECA93E;
+$borchester-off-white: #FAF1E6;
+
+.borchester-template__body {
+  background-color: $borchester-off-white;
+}
+
+.borchester-header {
+  background-color: $borchester-green;
+  border-color: $borchester-off-white;
+}
+
+.borchester-header__container {
+  border-color: $borchester-yellow;
+}
+
+.borchester-header__logo {
+  padding: 10px 0;
+}
