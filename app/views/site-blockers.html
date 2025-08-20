@@ -17,7 +17,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/site-timeline" method="post">
+      <form class="form" action="/market-interest" method="post">
         {{ govukCheckboxes({
           name: "siteConstraints",
           fieldset: {
@@ -34,10 +34,6 @@
             {
               value: "lease",
               text: "Existing use on the site with a lease"
-            },
-            {
-              value: "multiple-ownership",
-              text: "Multiple ownership"
             },
             {
               value: "third-party-land",
@@ -65,6 +61,17 @@
               behaviour: "exclusive"
             }
           ]
+        }) }}
+
+        {{ govukTextarea({
+          id: "constraintsDetails",
+          name: "constraintsDetails",
+          label: {
+            text: "If you have selected any of the above please provide details of the constraints"
+          },
+          hint: {
+            text: "You have 350 words remaining"
+          }
         }) }}
 
         <div class="govuk-button-group">

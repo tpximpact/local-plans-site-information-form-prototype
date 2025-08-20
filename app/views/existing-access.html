@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "Would you be willing for this site to be joined with adjacent sites, or split?" %}
+{% set pageName = "Is there existing access to and from the public highway?" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -17,18 +17,15 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/existing-access" method="post">
+      <form class="form" action="/site-connection" method="post">
         {{ govukRadios({
-          name: "siteJoining",
+          name: "existingAccess",
           fieldset: {
             legend: {
               text: pageName,
               classes: "govuk-fieldset__legend--l",
               isPageHeading: true
             }
-          },
-          hint: {
-            text: "Sometimes it might be better to join sites together or, split up ones to make improved development sites."
           },
           items: [
             {
@@ -40,11 +37,23 @@
               text: "No"
             },
             {
-              value: "maybe",
-              text: "Maybe"
+              value: "new-access",
+              text: "New access will be provided"
             }
           ]
         }) }}
+
+        {{ govukTextarea({
+          id: "accessDetails",
+          name: "accessDetails",
+          label: {
+            text: "Further details about access to and from the public highway"
+          },
+          hint: {
+            text: "You have 350 words remaining"
+          }
+        }) }}
+    
 
         <div class="govuk-button-group">
           {{ govukButton({

@@ -1,0 +1,53 @@
+{% extends "layouts/borchester.html" %}
+
+{% set pageName = "Review site details" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-m">Site boundary</h2>
+      <img src="/public/images/site-boundary-map.png" alt="Site boundary map" style="width: 100%; height: auto;">
+
+      <p><a href="/site-boundary">Edit boundary</a></p>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">Site address</h2>
+
+      <p class="govuk-body">
+        Land adjacent to 1 Washington Street,<br>
+        1 Washington Street,<br>
+        Borchester,<br>
+        BR1 1NL
+      </p>
+
+      <p><a href="/site-address">Edit address</a></p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue",
+          href: "/pre-application"
+        }) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

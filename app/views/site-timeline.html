@@ -3,67 +3,97 @@
 {% set pageName = "When do you think the site will be ready for its intended use?" %}
 
 {% block pageTitle %}
-  {{ pageName }} – {{ serviceName }}
+{{ pageName }} – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      
-      <form class="form" action="/additional-comments" method="post">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                {{ pageName }}
-              </h1>
-            </legend>
-
-            <p class="govuk-body">We need to know which financial year you think the site will be ready. For example, when you think the first house or business space will be built. Our financial year runs from 1 April to 31 March.</p>
-
-            <div class="govuk-form-group">
-              {{ govukInput({
-                label: {
-                  text: "Year",
-                  classes: "govuk-label--s"
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    <form class="form" action="/additional-comments" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {{ pageName }}
+            </h1>
+          </legend>
+          
+          <div class="govuk-form-group">
+            
+            {{ govukDateInput({
+              namePrefix: "expectedReady",
+              fieldset: {
+                legend: {
+                  text: "When do you expect the site to be ready for development?",
+                  classes: "govuk-fieldset__legend--m"
+                }
+              },
+              items: [
+                {
+                  name: "expectedReadyMonth",
+                  label: "Month",
+                  classes: "govuk-input--width-2"
                 },
-                id: "timeline-year",
-                name: "timelineYear",
-                classes: "govuk-input--width-4",
-                type: "number",
-                pattern: "[0-9]*",
-                spellcheck: false
-              }) }}
-            </div>
+                {
+                  name: "expectedReadyYear",
+                  label: "Year",
+                  classes: "govuk-input--width-4"
+                }
+              ]
+            }) }}
+
+            {{ govukDateInput({
+              namePrefix: "firstCompletion",
+              fieldset: {
+                legend: {
+                  text: "When do you expect first completions on site?",
+                  classes: "govuk-fieldset__legend--m"
+                }
+              },
+              items: [
+                {
+                  name: "firstCompletionMonth",
+                  label: "Month",
+                  classes: "govuk-input--width-2"
+                },
+                {
+                  name: "firstCompletionYear",
+                  label: "Year",
+                  classes: "govuk-input--width-4"
+                }
+              ]
+            }) }}
 
             {{ govukCheckboxes({
               name: "timelineUnknown",
               items: [
-                {
-                  value: "unknown",
-                  text: "I don't know"
-                }
+              {
+                value: "unknown",
+                text: "I don't know"
+              }
               ]
             }) }}
           </fieldset>
         </div>
-
+        
         <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
           }) }}
-
+          
           <a href="#" class="govuk-link">Back</a>
         </div>
       </form>
-
+      
     </div>
   </div>
-{% endblock %}
+  {% endblock %}
+  

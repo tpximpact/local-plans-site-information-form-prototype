@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "Would you be willing for this site to be joined with adjacent sites, or split?" %}
+{% set pageName = "Does this site have multiple owners?" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -17,9 +17,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/existing-access" method="post">
+      <form class="form" action="/site-blockers" method="post">
+        {% set detailsHtml %}
+          {{ govukTextarea({
+            id: "ownerDetails",
+            name: "ownerDetails",
+            label: {
+              text: "Please give details of the site owners"
+            }
+          }) }}
+        {% endset %}
+
         {{ govukRadios({
-          name: "siteJoining",
+          name: "multipleOwners",
           fieldset: {
             legend: {
               text: pageName,
@@ -27,22 +37,18 @@
               isPageHeading: true
             }
           },
-          hint: {
-            text: "Sometimes it might be better to join sites together or, split up ones to make improved development sites."
-          },
           items: [
             {
               value: "yes",
-              text: "Yes"
+              text: "Yes",
+              conditional: {
+                html: detailsHtml
+              }
             },
             {
               value: "no",
               text: "No"
-            },
-            {
-              value: "maybe",
-              text: "Maybe"
-            }
+            }   
           ]
         }) }}
 

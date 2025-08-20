@@ -1,0 +1,45 @@
+{% extends "layouts/borchester.html" %}
+
+{% set pageName = "What is the potential scale of development?" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <form class="form" action="/site-constraints" method="post">
+        {{ govukInput({
+          id: "scaleOfDevelopment",
+          name: "scaleOfDevelopment",
+          label: {
+            text: pageName,
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Please indicate how many homes or jobs you think the site could accommodate."
+          }
+        })}}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <a href="#" class="govuk-link">Back</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

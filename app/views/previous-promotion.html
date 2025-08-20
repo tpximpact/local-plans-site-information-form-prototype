@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "What is your connection to the site?" %}
+{% set pageName = "Has this site been submitted or assessed in a site assessment before?" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -17,19 +17,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/multiple-owners" method="post">
-        {% set otherHtml %}
+      <form class="form" action="/current-use" method="post">
+        {% set promotionHtml %}
           {{ govukInput({
-            id: "otherConnection",
-            name: "otherConnection",
+            id: "previousPromotionReference",
+            name: "previousPromotionReference",
             label: {
-              text: "Please specify"
+              text: "Reference or date of previous submission"
             }
           }) }}
         {% endset %}
 
         {{ govukRadios({
-          name: "siteConnection",
+          name: "previousPromotion",
           fieldset: {
             legend: {
               text: pageName,
@@ -39,31 +39,15 @@
           },
           items: [
             {
-              value: "landowner",
-              text: "Landowner or landowner's agent"
-            },
-            {
-              value: "developer",
-              text: "Developer or developer's agent"
-            },
-            {
-              value: "business",
-              text: "Commercial or business operator"
-            },
-            {
-              value: "resident",
-              text: "Local resident"
-            },
-            {
-              value: "community",
-              text: "Community group"
-            },
-            {
-              value: "other",
-              text: "Other – please specify below",
+              value: "yes",
+              text: "Yes",
               conditional: {
-                html: otherHtml
+                html: promotionHtml
               }
+            },
+            {
+              value: "no",
+              text: "No"
             }
           ]
         }) }}

@@ -35,6 +35,12 @@
 
       <p class="govuk-body">If you skip this step, we may ask how you will mitigate the constraints when we assess all suggested sites.</p>
 
+      {% set floodZone1Status %}{{ "Complete" if data.floodZone1Response else "Incomplete" }}{% endset %}
+      {% set floodZone1Tag %}{{ "govuk-tag--blue" if data.floodZone1Response else "govuk-tag--grey" }}{% endset %}
+
+      {% set floodZone3Status %}{{ "Complete" if data.floodZone3Response else "Incomplete" }}{% endset %}
+      {% set floodZone3Tag %}{{ "govuk-tag--blue" if data.floodZone3Response else "govuk-tag--grey" }}{% endset %}
+
       {{ govukTaskList({
         items: [
           {
@@ -44,8 +50,8 @@
             href: "/flood-zone-1",
             status: {
               tag: {
-                text: "Incomplete",
-                classes: "govuk-tag--grey"
+                text: floodZone1Status,
+                classes: floodZone1Tag
               }
             }
           },
@@ -56,8 +62,8 @@
             href: "/flood-zone-3",
             status: {
               tag: {
-                text: "Incomplete",
-                classes: "govuk-tag--grey"
+                text: floodZone3Status,
+                classes: floodZone3Tag
               }
             }
 

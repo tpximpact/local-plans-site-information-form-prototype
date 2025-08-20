@@ -1,0 +1,47 @@
+{% extends "layouts/borchester.html" %}
+
+{% set pageName = "Upload your boundary shape file" %}
+
+{% block pageTitle %}
+  {{ pageName }} – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/site-address" method="post">
+
+        {{ govukFileUpload({
+          id: "file-upload",
+          name: "file-upload",
+          label: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-label--l"
+          },
+          hint: {
+            text: "You can upload a GeoJSON, GML or Geopackage file"
+          },
+          javascript: true
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Upload file"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -16,13 +16,15 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p class="govuk-body">6 addresses found for wr11nl and 1.</p>
+      {% set searchResults %}
+        <p class="govuk-body">6 addresses found for wr11nl and 1.</p>
 
-      {{ govukButton({
-        text: "Search again",
-        href: "/find-address",
-        classes: "govuk-button--secondary"
-      }) }}
+        {{ govukButton({
+          text: "Search again",
+          href: "/find-address",
+          classes: "govuk-button--secondary"
+        }) }}
+      {% endset %}
 
       <form class="form" action="/site-boundary-constraints" method="post">
         {{ govukRadios({
@@ -34,30 +36,35 @@
               isPageHeading: true
             }
           },
+          formGroup: {
+            beforeInputs: {
+              html: searchResults
+            }
+          },
           items: [
             {
-              value: "1-washington-street",
-              text: "1 Washington Street, Worcester, WR1 1NL"
+              value: "1 Washington Street, Borchester, BR1 1NL",
+              text: "1 Washington Street, Borchester, BR1 1NL"
             },
             {
-              value: "10-washington-street",
-              text: "10 Washington Street, Worcester, WR1 1NL"
+              value: "10 Washington Street, Borchester, BR1 1NL",
+              text: "10 Washington Street, Borchester, BR1 1NL"
             },
             {
-              value: "11-washington-street",
-              text: "11 Washington Street, Worcester, WR1 1NL"
+              value: "11 Washington Street, Borchester, BR1 1NL",
+              text: "11 Washington Street, Borchester, BR1 1NL"
             },
             {
-              value: "101-washington-street",
-              text: "101 Washington Street, Worcester, WR1 1NL"
+              value: "101 Washington Street, Borchester, BR1 1NL",
+              text: "101 Washington Street, Borchester, BR1 1NL"
             },
             {
-              value: "110-washington-street",
-              text: "110 Washington Street, Worcester, WR1 1NL"
+              value: "110 Washington Street, Borchester, BR1 1NL",
+              text: "110 Washington Street, Borchester, BR1 1NL"
             },
             {
-              value: "111-washington-street",
-              text: "111 Washington Street, Worcester, WR1 1NL"
+              value: "111 Washington Street, Borchester, BR1 1NL",
+              text: "111 Washington Street, Borchester, BR1 1NL"
             }
           ]
         }) }}

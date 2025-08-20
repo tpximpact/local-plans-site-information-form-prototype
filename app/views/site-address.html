@@ -31,6 +31,15 @@
       <form class="form" action="/pre-application" method="post">
         {{ govukInput({
           label: {
+            text: "Site name",
+            classes: "govuk-label--s"
+          },
+          id: "siteName",
+          name: "siteName"
+        }) }}
+
+        {{ govukInput({
+          label: {
             text: "Address line 1",
             classes: "govuk-label--s"
           },
@@ -45,15 +54,6 @@
           },
           id: "addressLine2",
           name: "addressLine2"
-        }) }}
-
-        {{ govukInput({
-          label: {
-            text: "Site name",
-            classes: "govuk-label--s"
-          },
-          id: "siteName",
-          name: "siteName"
         }) }}
 
         {{ govukInput({
