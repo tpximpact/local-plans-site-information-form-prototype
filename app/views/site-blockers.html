@@ -19,7 +19,8 @@
       
       <form class="form" action="/market-interest" method="post">
         {{ govukCheckboxes({
-          name: "siteConstraints",
+          name: "siteBlockers",
+          values: data['siteBlockers'],
           fieldset: {
             legend: {
               text: pageName,
@@ -32,32 +33,35 @@
           },
           items: [
             {
-              value: "lease",
+              value: "Existing use on the site with a lease",
               text: "Existing use on the site with a lease"
             },
             {
-              value: "third-party-land",
+              value: "Reliant on third party land",
               text: "Reliant on third party land (for example, to provide access or there are ransom strips)"
             },
             {
-              value: "legal-impediments",
+              value: "Legal impediments to development",
               text: "Legal impediments to development (for example, restrictive covenants)"
             },
             {
-              value: "abnormal-costs",
+              value: "Notable abnormal costs",
               text: "Notable abnormal costs related to the development"
             },
             {
-              value: "neighbouring-uses",
+              value: "Neighbouring uses",
               text: "Neighbouring uses or structures that impact the development (for example, uses that affect amenity or structures that have associated offsets)"
             },
             {
-              value: "utilities",
+              value: "Site can't be connected to existing utilities",
               text: "The site can't be connected to existing utilities (for example: sewers, electricity, gas, and broadband)"
             },
             {
-              value: "none",
-              text: "None",
+              divider: "or"
+            },
+            {
+              value: "None",
+              text: "None of the above",
               behaviour: "exclusive"
             }
           ]
@@ -66,6 +70,7 @@
         {{ govukTextarea({
           id: "constraintsDetails",
           name: "constraintsDetails",
+          value: data['constraintsDetails'],
           label: {
             text: "If you have selected any of the above please provide details of the constraints"
           },

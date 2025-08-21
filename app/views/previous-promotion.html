@@ -22,6 +22,7 @@
           {{ govukInput({
             id: "previousPromotionReference",
             name: "previousPromotionReference",
+            value: data['previousPromotionReference'],
             label: {
               text: "Reference or date of previous submission"
             }
@@ -30,6 +31,7 @@
 
         {{ govukRadios({
           name: "previousPromotion",
+          value: data['previousPromotion'],
           fieldset: {
             legend: {
               text: pageName,

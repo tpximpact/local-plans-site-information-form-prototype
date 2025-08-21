@@ -35,7 +35,8 @@
             classes: "govuk-label--s"
           },
           id: "siteName",
-          name: "siteName"
+          name: "siteName",
+          value: data['siteName']
         }) }}
 
         {{ govukInput({
@@ -44,7 +45,8 @@
             classes: "govuk-label--s"
           },
           id: "addressLine1",
-          name: "addressLine1"
+          name: "addressLine1",
+          value: data['addressLine1']
         }) }}
 
         {{ govukInput({
@@ -53,7 +55,8 @@
             classes: "govuk-label--s"
           },
           id: "addressLine2",
-          name: "addressLine2"
+          name: "addressLine2",
+          value: data['addressLine2']
         }) }}
 
         {{ govukInput({
@@ -62,7 +65,8 @@
             classes: "govuk-label--s"
           },
           id: "townCity",
-          name: "townCity"
+          name: "townCity",
+          value: data['townCity']
         }) }}
 
         {{ govukInput({
@@ -71,7 +75,8 @@
             classes: "govuk-label--s"
           },
           id: "county",
-          name: "county"
+          name: "county",
+          value: data['county']
         }) }}
 
         {{ govukInput({
@@ -81,7 +86,8 @@
           },
           id: "postcode",
           name: "postcode",
-          classes: "govuk-input--width-10"
+          classes: "govuk-input--width-10",
+          value: data['postcode']
         }) }}
 
         <div class="govuk-button-group">

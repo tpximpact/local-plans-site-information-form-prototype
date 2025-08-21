@@ -22,6 +22,7 @@
       <form class="form" action="/site-constraints" method="post">
         {{ govukRadios({
           name: "floodZone3Type",
+          value: data['floodZone3Type'],
           fieldset: {
             legend: {
               text: "What type of development are you proposing on Flood zone 3?",
@@ -30,19 +31,19 @@
           },
           items: [
             {
-              value: "built",
+              value: "Built",
               text: "Built"
             },
             {
-              value: "change",
+              value: "Change",
               text: "Change of use or other alterations to an existing building"
             },
             {
-              value: "landscaping",
+              value: "Landscaping",
               text: "Landscaping"
             },
             {
-              value: "skip",
+              value: "I don't want to provide a mitigation for this risk right now",
               text: "I don't want to provide a mitigation for this risk right now"
             }
           ]

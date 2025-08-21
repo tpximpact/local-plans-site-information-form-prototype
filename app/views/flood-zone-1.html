@@ -21,6 +21,7 @@
       <form class="form" action="/site-constraints" method="post">
         {{ govukRadios({
           name: "floodZone1Response",
+          values: data['floodZone1Response'],
           fieldset: {
             legend: {
               text: "This site is in flood zone 1",
@@ -29,11 +30,11 @@
           },
           items: [
             {
-              value: "understand",
+              value: "Site is over 1 hectare and will need to undertake a flood risk assessment",
               text: "I understand that this site is over 1 hectare and will need to undertake a flood risk assessment should it be selected"
             },
             {
-              value: "skip",
+              value: "I don't want to provide a mitigation for this risk right now",
               text: "I don't want to provide a mitigation for this risk right now"
             }
           ]

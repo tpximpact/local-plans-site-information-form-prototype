@@ -17,9 +17,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/site-connection" method="post">
+      <form class="form" action="/site-blockers" method="post">
         {{ govukRadios({
           name: "existingAccess",
+          value: data['existingAccess'],
           fieldset: {
             legend: {
               text: pageName,
@@ -29,15 +30,15 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             },
             {
-              value: "new-access",
+              value: "New access will be provided",
               text: "New access will be provided"
             }
           ]
@@ -46,6 +47,7 @@
         {{ govukTextarea({
           id: "accessDetails",
           name: "accessDetails",
+          value: data['accessDetails'],
           label: {
             text: "Further details about access to and from the public highway"
           },

@@ -20,8 +20,9 @@
       <form class="form" action="/site-timeline" method="post">
         {% set detailsHtml %}
         {{ govukTextarea({
-          id: "constraintsDetails",
-          name: "constraintsDetails",
+          id: "marketInterestDetails",
+          name: "marketInterestDetails",
+          value: data['marketInterestDetails'],
           label: {
             text: "Please provide details of any discussions or interest in the site"
           },
@@ -33,6 +34,7 @@
       
         {{ govukRadios({
           name: "marketInterest",
+          value: data['marketInterest'],
           fieldset: {
             legend: {
               text: pageName,
@@ -45,14 +47,14 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes",
               conditional: {
                 html: detailsHtml
               }
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             }
           ]

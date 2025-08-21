@@ -18,5 +18,3 @@ router.post('/site-boundary-choice', (req, res) => {
     res.render('/site-boundary-choice')
   }
 })
-
-

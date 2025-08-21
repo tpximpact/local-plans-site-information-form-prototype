@@ -17,9 +17,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/existing-access" method="post">
+      <form class="form" action="/site-constraints" method="post">
         {{ govukRadios({
           name: "siteJoining",
+          value: data['siteJoining'],
           fieldset: {
             legend: {
               text: pageName,
@@ -32,15 +33,15 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             },
             {
-              value: "maybe",
+              value: "Maybe",
               text: "Maybe"
             }
           ]

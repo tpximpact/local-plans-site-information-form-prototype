@@ -22,6 +22,7 @@
           {{ govukInput({
             id: "otherConnection",
             name: "otherConnection",
+            value: data['otherConnection'],
             label: {
               text: "Please specify"
             }
@@ -30,6 +31,7 @@
 
         {{ govukRadios({
           name: "siteConnection",
+          value: data['siteConnection'],
           fieldset: {
             legend: {
               text: pageName,
@@ -39,27 +41,27 @@
           },
           items: [
             {
-              value: "landowner",
+              value: "Landowner or landowner's agent",
               text: "Landowner or landowner's agent"
             },
             {
-              value: "developer",
+              value: "Developer or developer's agent",
               text: "Developer or developer's agent"
             },
             {
-              value: "business",
+              value: "Commercial or business operator",
               text: "Commercial or business operator"
             },
             {
-              value: "resident",
+              value: "Local resident",
               text: "Local resident"
             },
             {
-              value: "community",
+              value: "Community group",
               text: "Community group"
             },
             {
-              value: "other",
+              value: "Other",
               text: "Other – please specify below",
               conditional: {
                 html: otherHtml

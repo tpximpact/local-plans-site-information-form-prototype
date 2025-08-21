@@ -17,7 +17,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/site-blockers" method="post">
+      <form class="form" action="/existing-access" method="post">
         {% set detailsHtml %}
           {{ govukTextarea({
             id: "ownerDetails",
@@ -39,14 +39,14 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes",
               conditional: {
                 html: detailsHtml
               }
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             }   
           ]

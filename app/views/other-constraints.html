@@ -17,11 +17,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <form class="form" action="/site-joining" method="post">
+      <form class="form" action="/site-connection" method="post">
         {% set constraintsHtml %}
           {{ govukTextarea({
             id: "otherConstraints",
             name: "otherConstraints",
+            value: data['otherConstraints'],
             label: {
               text: "Please explain the constraints and how you plan to mitigate them"
             },
@@ -33,6 +34,7 @@
 
         {{ govukRadios({
           name: "hasOtherConstraints",
+          value: data['hasOtherConstraints'],
           fieldset: {
             legend: {
               text: pageName,

@@ -20,8 +20,9 @@
       <form class="form" action="/proposed-use" method="post">
         {% set otherHtml %}
           {{ govukInput({
-            id: "otherDetails",
-            name: "otherDetails",
+            id: "currentOtherDetails",
+            name: "currentOtherDetails",
+            value: data['currentOtherDetails'],
             label: {
               text: "Please provide a description of the current site usage"
             }
@@ -30,6 +31,7 @@
         
         {{ govukCheckboxes({
           name: "currentSiteUse",
+          values: data['currentSiteUse'],
           fieldset: {
             legend: {
               text: pageName,
@@ -45,47 +47,47 @@
           items: [
             {
               text: "Class B2: General industry",
-              value: "B2"
+              value: "Class B2: General industry"
             },
             {
               text: "Class B8: Storage and distribution",
-              value: "B8"
+              value: "Class B8: Storage and distribution"
             },
             {
               text: "Class C1: Hotels",
-              value: "C1"
+              value: "Class C1: Hotels"
             },
             {
               text: "Class C2: Residential institutions (for example care homes, boarding schools and colleges, hospitals or nursing homes)",
-              value: "C2"
+              value: "Class C2: Residential institutions (for example care homes, boarding schools and colleges, hospitals or nursing homes)"
             },
             {
               text: "Class C2a: Secure residential institutions (for example prisons, young offenders’ institutions, detention centres or secure training centres)",
-              value: "C2a"
+              value: "Class C2a: Secure residential institutions (for example prisons, young offenders’ institutions, detention centres or secure training centres)"
             },
             {
               text: "Class C3: Dwelling-houses",
-              value: "C3"
+              value: "Class C3: Dwelling-houses"
             },
             {
               text: "Class C4: Houses in multiple occupation",
-              value: "C4"
+              value: "Class C4: Houses in multiple occupation"
             },
             {
               text: "Class E: Commercial, Business and Service",
-              value: "E"
+              value: "Class E: Commercial, Business and Service"
             },
             {
               text: "Class F1: Learning and non-residential institutions (for example schools, museums, libraries or art galleries)",
-              value: "F1"
+              value: "Class F1: Learning and non-residential institutions (for example schools, museums, libraries or art galleries)"
             },
             {
               text: "Class F2: Local Community Uses (for example, community halls, meeting places, outdoor sport or recreation, swimming pools or ice skating rinks)",
-              value: "F2"
+              value: "Class F2: Local Community Uses (for example, community halls, meeting places, outdoor sport or recreation, swimming pools or ice skating rinks)"
             },
             {
               text: "Other (known as Sui generis): Uses which do not fall within the specified use classes above",
-              value: "Sui generis",
+              value: "Other (Sui generis)",
               conditional: {
                 html: otherHtml
               }

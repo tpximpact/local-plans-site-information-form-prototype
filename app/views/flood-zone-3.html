@@ -32,6 +32,7 @@
       <form class="form" action="/flood-zone-3-type" method="post">
         {{ govukRadios({
           name: "floodZone3Response",
+          value: data['floodZone3Response'],
           fieldset: {
             legend: {
               text: "Is any development proposed in the area falling within Flood Zone 3?",
@@ -40,15 +41,15 @@
           },
           items: [
             {
-              value: "no",
+              value: "No",
               text: "No, I understand that a flood risk assessment is needed for this site"
             },
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "skip",
+              value: "I don't want to provide a mitigation for this risk right now",
               text: "I don't want to provide a mitigation for this risk right now"
             }
           ]
