@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "Are you aware of other constraints that you want to tell us about?" %}
+{% set pageName = "Are you aware of any other constraints?" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -19,16 +19,14 @@
       
       <form class="form" action="/site-connection" method="post">
         {% set constraintsHtml %}
-          {{ govukTextarea({
+          {{ govukCharacterCount({
             id: "otherConstraints",
             name: "otherConstraints",
             value: data['otherConstraints'],
             label: {
-              text: "Please explain the constraints and how you plan to mitigate them"
+              text: "Explain the constraints and how you plan to mitigate them"
             },
-            hint: {
-              text: "You have 350 words remaining"
-            }
+            maxwords: 350
           }) }}
         {% endset %}
 

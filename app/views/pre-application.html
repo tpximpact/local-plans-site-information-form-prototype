@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "Have you undertaken any pre-application discussions with the Council on this site?" %}
+{% set pageName = "Have you had any pre-application discussions with the council about this site?" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -24,7 +24,7 @@
             name: "preAppReference",
             value: data['preAppReference'],
             label: {
-              text: "Please provide your pre-application reference"
+              text: "Provide your pre-application reference"
             }
           }) }}
         {% endset %}

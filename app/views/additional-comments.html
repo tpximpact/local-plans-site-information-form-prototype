@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "Please provide any additional comments you wish to make about the site" %}
+{% set pageName = "Provide any additional comments you want to make about the site" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -25,19 +25,17 @@
             </label>
           </h1>
           
-          <p class="govuk-body">Please tell us if there's anything else you'd like us to know about this site, and the use or uses you've suggested for it. For example:</p>
+          <p class="govuk-body">Tell us if there's anything else you'd like us to know about this site, and the use or uses you have suggested for it. For example:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>if it's used by local people for specific activities</li>
             <li>Example 2</li>
             <li>Example 3</li>
           </ul>
 
-          {{ govukTextarea({
+          {{ govukCharacterCount({
             name: "additionalComments",
             id: "additional-comments",
-            hint: {
-              text: "You have 350 words remaining"
-            }
+            maxwords: 350
           }) }}
         </div>
 

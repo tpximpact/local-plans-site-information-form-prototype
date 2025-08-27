@@ -19,12 +19,13 @@
       
       <form class="form" action="/existing-access" method="post">
         {% set detailsHtml %}
-          {{ govukTextarea({
+          {{ govukCharacterCount({
             id: "ownerDetails",
             name: "ownerDetails",
             label: {
-              text: "Please give details of the site owners"
-            }
+              text: "Give details of the site owners"
+            },
+            maxwords: 350
           }) }}
         {% endset %}
 

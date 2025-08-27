@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "Are any of the following true about the site?" %}
+{% set pageName = "Are any of these statements true about the site?" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -29,7 +29,7 @@
             }
           },
           hint: {
-            text: "You can select multiple."
+            text: "You can choose more than one option."
           },
           items: [
             {
@@ -38,7 +38,7 @@
             },
             {
               value: "Reliant on third party land",
-              text: "Reliant on third party land (for example, to provide access or there are ransom strips)"
+              text: "Reliant on third party land, for example, to provide access or there are ransom strips"
             },
             {
               value: "Legal impediments to development",
@@ -50,14 +50,11 @@
             },
             {
               value: "Neighbouring uses",
-              text: "Neighbouring uses or structures that impact the development (for example, uses that affect amenity or structures that have associated offsets)"
+              text: "Neighbouring uses or structures that affect the development, for example, amenities or structures that have associated offsets"
             },
             {
               value: "Site can't be connected to existing utilities",
-              text: "The site can't be connected to existing utilities (for example: sewers, electricity, gas, and broadband)"
-            },
-            {
-              divider: "or"
+              text: "The site can't be connected to existing utilities, for example sewers, electricity, gas and broadband"
             },
             {
               value: "None",
@@ -67,16 +64,14 @@
           ]
         }) }}
 
-        {{ govukTextarea({
+        {{ govukCharacterCount({
           id: "constraintsDetails",
           name: "constraintsDetails",
           value: data['constraintsDetails'],
           label: {
             text: "If you have selected any of the above please provide details of the constraints"
           },
-          hint: {
-            text: "You have 350 words remaining"
-          }
+          maxwords: 350
         }) }}
 
         <div class="govuk-button-group">

@@ -1,7 +1,9 @@
 {% extends "layouts/borchester.html" %}
 
+{% set pageName = "Your contact details" %}
+
 {% block pageTitle %}
-  Contact details – {{ serviceName }}
+  {{ pageName }} – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,31 +19,26 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Please provide your contact details
+        {{ pageName }}
       </h1>
 
       <p class="govuk-body">
-        We need your contact details so we can get in touch if we need to discuss
-        your suggestion, clarify anything, or gather more information.
+        We need your contact details so we can get in touch if we need to
+        discuss your suggestion, clarify anything, or gather more information.
       </p>
 
       <p class="govuk-body">
-        Your contact details will only be used to contact you about this site
-        suggestion. You can refer to our <a href="#">privacy notice</a> for more information.
+        We will only use your details to contact you about this site suggestion.
+        Read the <a href="#">privacy notice</a> to find out how we store and
+        process your information.
       </p>
 
-      <form class="form" action="/site-boundary-choice" method="post">
+      <form class="form" action="/contact-organisation" method="post">
 
         {{ govukInput({
           name: "name",
           label: { text: "Your name", classes: "govuk-label--s" },
           value: data['name']
-        }) }}
-
-        {{ govukInput({
-          name: "organisation",
-          label: { text: "Your organisation — if relevant", classes: "govuk-label--s"  },
-          value: data['organisation']
         }) }}
 
         {{ govukInput({
@@ -57,21 +54,6 @@
           type: "tel",
           classes: "govuk-input--width-10",
           value: data['phone']
-        }) }}
-
-        <p class="govuk-body">If you are acting on behalf of another person or organisation please provide details of the person or organisation you're acting on behalf of</p>
-
-        {{ govukInput({
-          name: "actingOnBehalfOf",
-          label: { text: "Their name or organisation's name", classes: "govuk-label--s"  },
-          value: data['actingOnBehalfOf']
-        }) }}
-
-        {{ govukTextarea({
-          name: "additionalInfo",
-          label: { text: "Any other information we should know about the person or organisation you're acting on behalf of", classes: "govuk-label--s"  },
-          rows: 5,
-          value: data['additionalInfo']
         }) }}
 
         {{ govukButton({

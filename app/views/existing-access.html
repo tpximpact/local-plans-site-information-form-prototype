@@ -44,16 +44,14 @@
           ]
         }) }}
 
-        {{ govukTextarea({
+        {{ govukCharacterCount({
           id: "accessDetails",
           name: "accessDetails",
           value: data['accessDetails'],
           label: {
-            text: "Further details about access to and from the public highway"
+            text: "Explain what  access to and from the public highway will be provided"
           },
-          hint: {
-            text: "You have 350 words remaining"
-          }
+          maxwords: 350
         }) }}
     
 
