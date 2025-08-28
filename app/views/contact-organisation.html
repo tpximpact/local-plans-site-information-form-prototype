@@ -1,6 +1,6 @@
 {% extends "layouts/borchester.html" %}
 
-{% set pageName = "Your organisation" %}
+{% set pageName = "Details of the person or organisation you're representing" %}
 
 {% block pageTitle %}
   {{ pageName }} – {{ serviceName }}
@@ -25,18 +25,12 @@
 
       <form class="form" action="/site-boundary-choice" method="post">
 
-        {{ govukInput({
-          name: "organisation",
-          label: { text: "Your organisation", classes: "govuk-label--s"  },
-          value: data['organisation']
-        }) }}
-
-        <p class="govuk-body">If you are acting on behalf of another person or organisation please provide details of the person or organisation you're acting on behalf of</p>
+        <p class="govuk-body">If you are acting on behalf of another person or organisation please provide details</p>
 
         {{ govukInput({
-          name: "actingOnBehalfOf",
+          name: "actingOnBehalfOfName",
           label: { text: "Their name or organisation's name", classes: "govuk-label--s"  },
-          value: data['actingOnBehalfOf']
+          value: data['actingOnBehalfOfName']
         }) }}
 
         {{ govukCharacterCount({

@@ -34,10 +34,17 @@
       <h2 class="govuk-heading-m">Site address</h2>
 
       <p class="govuk-body">
-        Land adjacent to 1 Washington Street,<br>
-        1 Washington Street,<br>
-        Borchester,<br>
-        BR1 1NL
+        {{
+          ([
+            data['siteName'],
+            data['addressLine1'], 
+            data['addressLine2'],
+            data['townCity'],
+            data['county'],
+            data['postcode']
+          ] | select("truthy") | join("<br>") | safe ) 
+          if data['addressLine1'] or data['postcode'] else "Not provided"
+        }}
       </p>
 
       <p><a href="/site-address">Edit address</a></p>

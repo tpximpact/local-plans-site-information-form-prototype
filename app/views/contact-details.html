@@ -56,6 +56,28 @@
           value: data['phone']
         }) }}
 
+        {{ govukRadios({
+          name: "actingOnBehalfOf",
+          value: data['actingOnBehalfOf'],
+          fieldset: {
+            legend: {
+              text: "Are you acting on behalf of another person or organisation?",
+              classes: "govuk-fieldset__legend--s",
+              isPageHeading: false
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
         {{ govukButton({
           text: "Continue"
         }) }}

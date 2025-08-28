@@ -26,10 +26,6 @@
             value: { text: data['name'] if data['name'] else "Not provided" }
           },
           {
-            key: { text: "Your organisation" },
-            value: { text: data['organisation'] if data['organisation'] else "Not provided" }
-          },
-          {
             key: { text: "Email address" },
             value: { text: data['email'] if data['email'] else "Not provided" }
           },
@@ -38,12 +34,16 @@
             value: { text: data['phone'] if data['phone'] else "Not provided" }
           },
           {
-            key: { text: "Acting on behalf of" },
+            key: { text: "Acting on behalf of another person or organisation" },
             value: { text: data['actingOnBehalfOf'] if data['actingOnBehalfOf'] else "Not provided" }
           },
           {
+            key: { text: "Their name or organisation's name" },
+            value: { text: data['actingOnBehalfOfName'] if data['actingOnBehalfOfName'] else "Not provided" }
+          },
+          {
             key: { text: "Additonal information" },
-            value: { text: data['additonalInfo'] if data['additonalInfo'] else "Not provided" }
+            value: { text: data['additionalInfo'] if data['additionalInfo'] else "Not provided" }
           }
         ]
       }) }}
@@ -107,10 +107,10 @@
       <h2 class="govuk-heading-m">Suitability</h2>
 
       {% set currentUseHtml = data['currentSiteUse'] | join("<br>") if data['currentSiteUse'] else "Not provided" %}
-      {% set currentUseHtml = currentUseHtml + "<br> Other: " + (data['currentOtherDetails']) if data['currentOtherDetails'] else "" %}
+      {% set currentUseHtml = currentUseHtml + ("<br> Other: " + data['currentOtherDetails'] if data['currentOtherDetails'] else "") %}
 
       {% set proposedUseHtml = data['proposedSiteUse'] | join("<br>") if data['proposedSiteUse'] else "Not provided" %}
-      {% set proposedUseHtml = proposedUseHtml + "<br> Other: " + (data['proposedOtherDetails']) if data['proposedOtherDetails'] else "" %}
+      {% set proposedUseHtml = proposedUseHtml + ("<br> Other: " + data['proposedOtherDetails'] if data['proposedOtherDetails'] else "") %}
       
       {{ govukSummaryList({
         rows: [
